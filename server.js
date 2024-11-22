@@ -1,4 +1,4 @@
-// <------------------------------------------- Imports and Configuration ------------------------------------------------------>
+// <------------------------------------------- IMPORT AND CONFIGURATION ------------------------------------------------------>
 const dotenv = require("dotenv"); // require package
 dotenv.config(); // Loads the environment variables from .env file
 const express = require('express')
@@ -6,9 +6,7 @@ const mongoose = require("mongoose"); // require package
 // const methodOverride = require('method-override');
 const app = express();
 
-
-
-// <------------------------------------------- Database Connection------------------------------------------------------>
+// <------------------------------------------- DATABASE CONNECTION------------------------------------------------------>
 
 // Connect to MongoDB using the connection string in the .env file
 mongoose.connect(process.env.MONGODB_URI);
@@ -16,31 +14,27 @@ mongoose.connect(process.env.MONGODB_URI);
 mongoose.connection.on("connected", () => {
     console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
   });
-
-
-
-// <------------------------------------------- Controllers ------------------------------------------------------>
+// <------------------------------------------- CONRTROLLERS ------------------------------------------------------>
 // The server now uses MVC architecture, moving the Fruit model interactions from the main server file to a dedicated controller for better code organization
 // const Fruit = require("./models/fruit.js");
 
 const charactersCtrl = require("./controllers/characters");
 
-
-// <------------------------------------------- ROUTES ------------------------------------------------------>
-
-
-
+// <------------------------------------------- MIDDLEWARE ------------------------------------------------------>
+app.use(express.urlencoded({ extended: false }));
+// !! <------------------------------------------- ROUTES ------------------------------------------------------>
 
 // <---------------------------------------------- HOME PAGE ---------------------------->
-app.get('/', charactersCtrl.homePage);
+// #1
+app.get("/", charactersCtrl.homePage);
 
+// <---------------------------------------------- ADD NEW CHARACTERPAGE  ---------------------------->
+//#2
+app.get("/characters/new", charactersCtrl.addNewCharacter);
 
-// <---------------------------------------------- NEW CHARACTER REQUEST ROUTE  ---------------------------->
-app.get('/characters/new', charactersCtrl.newCharacterRequest);
-
-
-// <---------------------------------------------- NEW CHARACTER REQUEST ROUTE  ---------------------------->
-
+// <---------------------------------------------- CAPTURE NEW CHARACTER FORM SUBMISSION DATA  ---------------------------->
+//#3
+app.post("/characters", charactersCtrl.captureNewCharacterData)
 
 
 
