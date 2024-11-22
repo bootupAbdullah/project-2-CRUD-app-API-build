@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 // <------------------------------------------- Schemas ------------------------------------------------------>
 const characterSchema = new mongoose.Schema({
     name: String,
-    galleryAvailabe: Boolean,
+    galleryAvailable: Boolean,
   });
 // <------------------------------------------- Model ------------------------------------------------------>
   const Character = mongoose.model("Character", characterSchema); // create model

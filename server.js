@@ -28,13 +28,18 @@ app.use(express.urlencoded({ extended: false }));
 // #1
 app.get("/", charactersCtrl.homePage);
 
-// <---------------------------------------------- ADD NEW CHARACTERPAGE  ---------------------------->
+// <----------------------------------------------INDEX PAGE---------------------------->
+//#4
+app.get("/characters", charactersCtrl.indexPage);
+
+// <---------------------------------------------- ADD NEW CHARACTER PAGE  ---------------------------->
 //#2
 app.get("/characters/new", charactersCtrl.addNewCharacter);
 
-// <---------------------------------------------- CAPTURE NEW CHARACTER FORM SUBMISSION DATA  ---------------------------->
+// <---------------------------------------------- CAPTURE NEW CHARACTER DATA/FORM SUBMISSION (NEW.EJS)---------------------------->
 //#3
-app.post("/characters", charactersCtrl.captureNewCharacterData)
+app.post("/characters", charactersCtrl.captureNewCharacterData);
+
 
 
 
