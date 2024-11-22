@@ -24,19 +24,19 @@ const charactersCtrl = require("./controllers/characters");
 app.use(express.urlencoded({ extended: false }));
 // !! <------------------------------------------- ROUTES ------------------------------------------------------>
 
-// <---------------------------------------------- HOME PAGE ---------------------------->
+// <---------------------------------------------- HOME PAGE/ GET ROUTE ---------------------------->
 // #1
 app.get("/", charactersCtrl.homePage);
 
-// <----------------------------------------------INDEX PAGE---------------------------->
+// <----------------------------------------------INDEX PAGE/ GET ROUTE---------------------------->
 //#4
 app.get("/characters", charactersCtrl.indexPage);
 
-// <---------------------------------------------- ADD NEW CHARACTER PAGE  ---------------------------->
+// <---------------------------------------------- ADD NEW CHARACTER PAGE/ GET ROUTE  ---------------------------->
 //#2
 app.get("/characters/new", charactersCtrl.addNewCharacter);
 
-// <---------------------------------------------- CAPTURE NEW CHARACTER DATA/FORM SUBMISSION (NEW.EJS)---------------------------->
+// <---------------------------------------------- CAPTURE NEW CHARACTER DATA/FORM SUBMISSION/ POST ROUTE---------------------------->
 //#3
 app.post("/characters", charactersCtrl.captureNewCharacterData);
 

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Character Index</title>
+  </head>
+  <body>
+    <h1>All Available Characters</h1>
+    <ul>
+        <% characters.forEach(character => { %>
+            <li><%= character.name %></li>
+    <%  }); %>
+    </ul>
+    <a href="/characters/new">Add New Character</a>
+  </body>
+</html>

@@ -14,7 +14,7 @@ const addNewCharacter = async (req, res) => {
     res.render("characters/new.ejs")
 };
 
-// <-------------------------------------------CAPTURE NEW CHARACTER DATA/FORM SUBMISSION/ POST ROUTE ------------------------------------------------------>
+// <-------------------------------------------CAPTURE NEW CHARACTER DATA/FORM SUBMISSION/ CREATE/POST ROUTE ------------------------------------------------------>
 // #3
 // HTTP POST  - This route captures the data submitted by the form deployed by the 'new.ejs' page, endpoint: '/characters' - as designated by form on 'new.ejs'
 const captureNewCharacterData = async (req, res) => {
@@ -24,14 +24,16 @@ const captureNewCharacterData = async (req, res) => {
         req.body.galleryAvailable = false;
     }
     await Character.create(req.body);
-    res.redirect('characters/new')
+    res.redirect('characters')
 };
 // <------------------------------------------- INDEX PAGE/ GET ROUTE------------------------------------------------------>
 // #4
 // HTTP GET - Renderes the 'index.ejs' page
 const indexPage = async (req, res) => {
-    res.send("Welcome to the index page!")
-}
+    const allCharacters = await Character.find();
+    console.log(allCharacters); // log the characters!
+    res.render("characters/index.ejs", {characters: allCharacters})
+};
 
 // <--------------------------------------------EXPORTS ------------------------------------------------------>
 
