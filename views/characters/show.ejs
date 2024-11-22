@@ -15,6 +15,7 @@
    <form action="/characters/<%= character._id %>?_method=DELETE" method="POST">
    <button type="submit">Delete <%= character.name %></button>
    </form>
+   <a href = "/characters/<%= character._id %>/edit"> Edit <%= character.name %> </a> <br />
    <a href = "/characters/">Back to Characters</a>
 </body>
 </html>

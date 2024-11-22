@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Character %> </title>
+  </head>
+  <body>
+    <h1>Edit <%= character.name %></h1>
+    <form action="/characters/<%=character._id%>?_method=PUT" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" name="name" value="<%=character.name%>" id="name" />
+
+        <label for="galleryAvailable">Gallery Available?</label>
+        <input  name="galleryAvailable" type="checkbox" id="galleryAvailable"  <% if (character.galleryAvailable) { %>checked<% } %> />
+
+        <button type="submit">Update Character</button> <br />
+    </form>
+<a href="/characters/">Back to Characters</a>
+</body>
+</html>

@@ -1,4 +1,4 @@
-// <------------------------------------------- IMPORT AND CONFIGURATION ------------------------------------------------------>
+// <------------------------------------------- IMPORT AND CONFIGURATION -------------------------->
 const dotenv = require("dotenv"); // require package
 dotenv.config(); // Loads the environment variables from .env file
 const express = require('express')
@@ -6,7 +6,7 @@ const mongoose = require("mongoose"); // require package
 const methodOverride = require('method-override');
 const app = express();
 
-// <------------------------------------------- DATABASE CONNECTION------------------------------------------------------>
+// <------------------------------------------- DATABASE CONNECTION------------------------------->
 
 // Connect to MongoDB using the connection string in the .env file
 mongoose.connect(process.env.MONGODB_URI);
@@ -14,22 +14,21 @@ mongoose.connect(process.env.MONGODB_URI);
 mongoose.connection.on("connected", () => {
     console.log(`Connected to MongoDB ${mongoose.connection.name}.`);
   });
-// <------------------------------------------- CONRTROLLERS ------------------------------------------------------>
+// <------------------------------------------- CONRTROLLERS ------------------------------------->
 // The server now uses MVC architecture, moving the Fruit model interactions from the main server file to a dedicated controller for better code organization
 // const Fruit = require("./models/fruit.js");
 
 const charactersCtrl = require("./controllers/characters");
 
-// <------------------------------------------- MIDDLEWARE ------------------------------------------------------>
+// <------------------------------------------- MIDDLEWARE --------------------------------------->
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 
 
-// !! <-------------------------------------------------------------------- ROUTES --------------------------------------------------------------------->
+// !! <-------------------------------------------------------------------- ROUTES ----------------------------------->
 
 
-
-// <---------------------------------------------- HOME PAGE/ GET ROUTE ---------------------------->
+// <---------------------------------------------- HOME PAGE/ GET ROUTE --------------------------->
 // #1
 app.get("/", charactersCtrl.homePage);
 
@@ -37,24 +36,33 @@ app.get("/", charactersCtrl.homePage);
 //#4
 app.get("/characters", charactersCtrl.indexPage);
 
-// <---------------------------------------------- ADD NEW CHARACTER PAGE/ GET ROUTE  ---------------------------->
+// <---------------------------------------------- ADD NEW CHARACTER PAGE/ GET ROUTE  ------------->
 //#2
 app.get("/characters/new", charactersCtrl.addNewCharacter);
 
-// <---------------------------------------------- CAPTURE NEW CHARACTER DATA/FORM SUBMISSION/ POST ROUTE/ CREATE FUNCTIONALITY---------------------------->
+// <---------------------------------------------- CAPTURE NEW CHARACTER DATA/FORM SUBMISSION/ POST ROUTE/ CREATE FUNCTIONALITY------------>
 //#3
 app.post("/characters", charactersCtrl.captureNewCharacterData);
 
-// <----------------------------------------------SHOW PAGE/ GET ROUTE/ READ FUNCTIONALITY---------------------------->
+// <----------------------------------------------SHOW PAGE/ GET ROUTE/ READ FUNCTIONALITY--------->
 //#5
 app.get("/characters/:characterId", charactersCtrl.showPageById);
 
-// <----------------------------------------------DELETE FUNCTIONALITY---------------------------->
+// <----------------------------------------------DELETE FUNCTIONALITY------------------------------>
 //#6
 app.delete("/characters/:characterId", charactersCtrl.deleteACharacter);
 
+// <----------------------------------------------EDIT PAGE/ GET ROUTE ------------------------------------>
+//#7
+app.get("/characters/:characterId/edit", charactersCtrl.editACharacter);
 
-// <------------------------------------------- Start Server ------------------------------------------------------>
+
+// <----------------------------------------------UPDATE A CHARACTER/ PUT ROUTE------------------------------------>
+//#8
+app.put("/characters/:characterId", charactersCtrl.updateACharacter);
+
+
+// <------------------------------------------- Start Server --------------------------------------->
 app.listen(3003, () => {
     console.log('Listening on port 3003, Project-2-IS-A-GO!')
 });
