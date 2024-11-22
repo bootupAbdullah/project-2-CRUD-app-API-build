@@ -41,13 +41,14 @@ const indexPage = async (req, res) => {
 const showPageById = async (req, res) => {
     const foundCharacter = await Character.findById(req.params.characterId)
     res.render("characters/show.ejs", {character: foundCharacter})
-}
+};
 
 // <----------------------------------------------DELETE A CHARACTER/ DELETE ROUTE/ DELETE FUNCTIONALITY---------------------------->
 //#6
 const deleteACharacter = async (req, res) => {
-    res.send("This is the delete route")
-}
+    await Character.findByIdAndDelete(req.params.characterId);
+    res.redirect("/characters")
+};
 
 
 
