@@ -40,8 +40,9 @@ app.get("/characters/new", charactersCtrl.addNewCharacter);
 //#3
 app.post("/characters", charactersCtrl.captureNewCharacterData);
 
-
-
+// <----------------------------------------------SHOW PAGE/ GET ROUTE---------------------------->
+//#5
+app.get("/characters/:characterId", charactersCtrl.showPageById);
 
 // <------------------------------------------- Start Server ------------------------------------------------------>
 app.listen(3003, () => {

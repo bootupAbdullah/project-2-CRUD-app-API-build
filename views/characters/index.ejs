@@ -9,7 +9,7 @@
     <h1>All Available Characters</h1>
     <ul>
         <% characters.forEach(character => { %>
-            <li><%= character.name %></li>
+            <li><a href="/characters/<%= character._id%>"><%= character.name %></a></li>
     <%  }); %>
     </ul>
     <a href="/characters/new">Add New Character</a>

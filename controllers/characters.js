@@ -31,9 +31,16 @@ const captureNewCharacterData = async (req, res) => {
 // HTTP GET - Renderes the 'index.ejs' page
 const indexPage = async (req, res) => {
     const allCharacters = await Character.find();
-    console.log(allCharacters); // log the characters!
+    // console.log(allCharacters); // log the characters!
     res.render("characters/index.ejs", {characters: allCharacters})
 };
+
+// <----------------------------------------------SHOW PAGE/ GET ROUTE---------------------------->
+//#5
+// HTTP GET - Renders the 'show.ejs' page based on '_id'
+const showPageById = async (req, res) => {
+    res.send(`This route renders the show page for fruit id: ${req.params.characterId}!`)
+}
 
 // <--------------------------------------------EXPORTS ------------------------------------------------------>
 
@@ -42,4 +49,5 @@ module.exports = {
     addNewCharacter,
     captureNewCharacterData,
     indexPage,
+    showPageById,
 }
