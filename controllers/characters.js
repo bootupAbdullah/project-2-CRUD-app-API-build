@@ -14,7 +14,7 @@ const addNewCharacter = async (req, res) => {
     res.render("characters/new.ejs")
 };
 
-// <-------------------------------------------CAPTURE NEW CHARACTER DATA/FORM SUBMISSION/ CREATE/POST ROUTE ------------------------------------------------------>
+// <-------------------------------------------CAPTURE NEW CHARACTER DATA/FORM SUBMISSION/POST ROUTE/CREATE FUNCTIONALITY ------------------------------------------------------>
 // #3
 // HTTP POST  - This route captures the data submitted by the form deployed by the 'new.ejs' page, endpoint: '/characters' - as designated by form on 'new.ejs'
 const captureNewCharacterData = async (req, res) => {
@@ -35,12 +35,21 @@ const indexPage = async (req, res) => {
     res.render("characters/index.ejs", {characters: allCharacters})
 };
 
-// <----------------------------------------------SHOW PAGE/ GET ROUTE---------------------------->
+// <----------------------------------------------SHOW PAGE/ GET ROUTE/ READ FUNCTIONALITY---------------------------->
 //#5
 // HTTP GET - Renders the 'show.ejs' page based on '_id'
 const showPageById = async (req, res) => {
-    res.send(`This route renders the show page for fruit id: ${req.params.characterId}!`)
+    const foundCharacter = await Character.findById(req.params.characterId)
+    res.render("characters/show.ejs", {character: foundCharacter})
 }
+
+// <----------------------------------------------DELETE A CHARACTER/ DELETE ROUTE/ DELETE FUNCTIONALITY---------------------------->
+//#6
+const deleteACharacter = async (req, res) => {
+    res.send("This is the delete route")
+}
+
+
 
 // <--------------------------------------------EXPORTS ------------------------------------------------------>
 
@@ -50,4 +59,5 @@ module.exports = {
     captureNewCharacterData,
     indexPage,
     showPageById,
+    deleteACharacter,
 }

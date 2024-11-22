@@ -3,7 +3,7 @@ const dotenv = require("dotenv"); // require package
 dotenv.config(); // Loads the environment variables from .env file
 const express = require('express')
 const mongoose = require("mongoose"); // require package
-// const methodOverride = require('method-override');
+const methodOverride = require('method-override');
 const app = express();
 
 // <------------------------------------------- DATABASE CONNECTION------------------------------------------------------>
@@ -22,7 +22,12 @@ const charactersCtrl = require("./controllers/characters");
 
 // <------------------------------------------- MIDDLEWARE ------------------------------------------------------>
 app.use(express.urlencoded({ extended: false }));
-// !! <------------------------------------------- ROUTES ------------------------------------------------------>
+app.use(methodOverride("_method"));
+
+
+// !! <-------------------------------------------------------------------- ROUTES --------------------------------------------------------------------->
+
+
 
 // <---------------------------------------------- HOME PAGE/ GET ROUTE ---------------------------->
 // #1
@@ -36,13 +41,18 @@ app.get("/characters", charactersCtrl.indexPage);
 //#2
 app.get("/characters/new", charactersCtrl.addNewCharacter);
 
-// <---------------------------------------------- CAPTURE NEW CHARACTER DATA/FORM SUBMISSION/ POST ROUTE---------------------------->
+// <---------------------------------------------- CAPTURE NEW CHARACTER DATA/FORM SUBMISSION/ POST ROUTE/ CREATE FUNCTIONALITY---------------------------->
 //#3
 app.post("/characters", charactersCtrl.captureNewCharacterData);
 
-// <----------------------------------------------SHOW PAGE/ GET ROUTE---------------------------->
+// <----------------------------------------------SHOW PAGE/ GET ROUTE/ READ FUNCTIONALITY---------------------------->
 //#5
 app.get("/characters/:characterId", charactersCtrl.showPageById);
+
+// <----------------------------------------------DELETE FUNCTIONALITY---------------------------->
+//#6
+app.delete("/characters/:characterId", charactersCtrl.deleteACharacter);
+
 
 // <------------------------------------------- Start Server ------------------------------------------------------>
 app.listen(3003, () => {

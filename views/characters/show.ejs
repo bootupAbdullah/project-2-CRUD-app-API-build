@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%=character.name%>'s Show Page</title>
+</head>
+<body>
+    <h1>Here is <%= character.name %>'s Show Page</h1>
+    <% if (character.galleryAvailable) { %>
+        <p> This character's gallery is ready!</p>
+  <%  } else { %>
+        <p> This character's gallery is NOT ready! Please check back later.</p>
+   <% } %>
+   <form action="/characters/<%= character._id %>?_method=DELETE" method="POST">
+   <button type="submit">Delete <%= character.name %></button>
+   </form>
+   <a href = "/characters/">Back to Characters</a>
+</body>
+</html>
