@@ -1,5 +1,6 @@
 // <------------------------------------------- MODEL IMPORT --------------------------------------->
 const Character  = require('../models/character');
+const crypto = require('crypto')
 
 
 // <------------------------------------------- HOME PAGE/ GET ROUTE-------------------------------->
@@ -30,7 +31,7 @@ const captureNewCharacterData = async (req, res) => {
 };
 // <------------------------------------------- INDEX PAGE/ GET ROUTE---------------------------------->
 // #4
-// HTTP GET - Renderes the 'index.ejs' page
+// HTTP GET - Renderes the 'index.ejs' page, endpoint: '/characters' - same as above - first the post route was created and then get - post, after posting form, redirects to GET route for matching page
 const indexPage = async (req, res) => {
     const allCharacters = await Character.find();
     // console.log(allCharacters); // log the characters!
@@ -44,11 +45,25 @@ const searchPage = async (req, res) => {
     res.render("characters/search.ejs")
 }
 
-// <----------------------------------------------SEARCH RESULTS/ GET ROUTE --------------------------->
+// <----------------------------------------------SEARCH PAGE/ POST ROUTE------------------------------------>
 //#6
-const searchResults = async (req, res) => {
-    res.render("characters/results.ejs")
+// HTTP POST
+const captureSearchData = async (req, res) => {
+    console.log(req.body)
+    console.log(new Date().getTime())
+
+
+    res.redirect("search")
 }
+
+
+
+
+// // <----------------------------------------------SEARCH RESULTS/ GET ROUTE --------------------------->
+// //#6
+// const searchResults = async (req, res) => {
+//     res.render("characters/results.ejs")
+// }
 
 
 // <----------------------------------------------SHOW PAGE/ GET ROUTE/ READ FUNCTIONALITY-------------->
@@ -93,8 +108,6 @@ const updateACharacter = async (req, res) => {
     res.redirect(`/characters/${req.params.characterId}`)
 }
 
-
-
 // <--------------------------------------------EXPORTS ------------------------------------------------------>
 
 module.exports = {
@@ -107,5 +120,6 @@ module.exports = {
     editACharacter,
     updateACharacter,
     searchPage,
-    searchResults
+    captureSearchData,
+    // searchResults
 }
