@@ -24,7 +24,6 @@ const charactersCtrl = require("./controllers/characters");
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
 
-
 // !! <-------------------------------------------------------------------- ROUTES ----------------------------------->
 
 
@@ -34,7 +33,7 @@ app.get("/", charactersCtrl.homePage);
 
 // <----------------------------------------------INDEX PAGE/ GET ROUTE---------------------------->
 //#4
-app.get("/characters", charactersCtrl.indexPage);
+// app.get("/characters", charactersCtrl.indexPage);
 
 // <---------------------------------------------- ADD NEW CHARACTER PAGE/ GET ROUTE  ------------->
 //#2
@@ -44,21 +43,33 @@ app.get("/characters/new", charactersCtrl.addNewCharacter);
 //#3
 app.post("/characters", charactersCtrl.captureNewCharacterData);
 
-// <----------------------------------------------SHOW PAGE/ GET ROUTE/ READ FUNCTIONALITY--------->
+// <----------------------------------------------INDEX PAGE/ GET ROUTE---------------------------->
+//#4
+app.get("/characters", charactersCtrl.indexPage);
+
+// <---------------------------------------------- SEARCH PAGE/ GET ROUTE --------------------------->
 //#5
+app.get("/characters/search", charactersCtrl.searchPage);
+
+// <----------------------------------------------SEARCH RESULTS/ GET ROUTE --------------------------->
+//#6
+app.get("/characters/search/results", charactersCtrl.searchResults);
+
+// <----------------------------------------------SHOW PAGE/ GET ROUTE/ READ FUNCTIONALITY--------->
+//#7
 app.get("/characters/:characterId", charactersCtrl.showPageById);
 
 // <----------------------------------------------DELETE FUNCTIONALITY------------------------------>
-//#6
+//#8
 app.delete("/characters/:characterId", charactersCtrl.deleteACharacter);
 
 // <----------------------------------------------EDIT PAGE/ GET ROUTE ------------------------------------>
-//#7
+//#9
 app.get("/characters/:characterId/edit", charactersCtrl.editACharacter);
 
 
 // <----------------------------------------------UPDATE A CHARACTER/ PUT ROUTE------------------------------------>
-//#8
+//#10
 app.put("/characters/:characterId", charactersCtrl.updateACharacter);
 
 
