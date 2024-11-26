@@ -3,19 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
     <title><%=character.name%>'s Show Page</title>
 </head>
-<body>
-    <h1>Here is <%= character.name %>'s Show Page</h1>
-    <% if (character.galleryAvailable) { %>
-        <p> This character's gallery is ready!</p>
-  <%  } else { %>
-        <p> This character's gallery is NOT ready! Please check back later.</p>
-   <% } %>
-   <form action="/characters/<%= character._id %>?_method=DELETE" method="POST">
-   <button type="submit">Delete <%= character.name %></button>
-   </form>
-   <a href = "/characters/<%= character._id %>/edit"> Edit <%= character.name %> </a> <br />
-   <a href = "/characters/">Back to Characters</a>
+<body class="regular-body">
+    <div class="container-style-1">
+        <div id="container-items">
+            <h1>Here is <%= character.name %>'s Show Page</h1>
+            <% if (character.galleryAvailable) { %>
+                <p> This character's gallery is ready!</p>
+            <%  } else { %>
+                <p> This character's gallery is NOT ready! Please check back later.</p>
+            <% } %>
+        </div>
+        <div id="show-page-buttons">
+        <form action="/characters/<%= character._id %>?_method=DELETE" method="POST">
+            <button  id="show-delete-button" type="submit">Delete <%= character.name %></button>
+        </form>
+        <div>
+            <a href = "/characters/<%= character._id %>/edit"> Edit <%= character.name %> </a> <br />
+        </div>
+        <a href = "/characters/">Back to Characters</a>
+        </div>
+    </div>
+
 </body>
 </html>

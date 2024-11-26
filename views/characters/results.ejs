@@ -3,14 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
     <title>Search Results</title>
 </head>
-<body>
+<body class="regular-body">
     <h1>Search Results</h1>
     <h3>id:<%=characterData[0].id%></h3>
-    <img src="<%=characterData[0].thumbnail.path%>/standard_xlarge.jpg" alt="<%=characterData[0].name%>">
-    <h2><%=characterData[0].name%></h2>
-    <p>Description:<%=characterData[0].description%></p>
-    <a href="/characters/search"><button>Back to Search</button></a>
+    <div id="search-results-flex-container">
+        <h2><%=characterData[0].name%></h2>
+        <img src="<%=characterData[0].thumbnail.path%>/standard_xlarge.jpg" alt="<%=characterData[0].name%>">
+        <p>Description:<%=characterData[0].description%></p>
+    </div>
+    <div id="back-to-search-button-div">
+        <a href="/characters/search" ><button>Back to Search</button></a>
+    </div >
 </body>
 </html>

@@ -1,27 +1,34 @@
+/*<---------------------------------------- FONTS --------------------------------------------------------------->*/
+
 @import url('https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 
+/*<---------------------------------------- STYLING --------------------------------------------------------------->*/
 
 * {
     box-sizing: border-box;
 }
 
 nav {
-    background-color: white;
-    padding: 8px 16px;
     display: flex;
     justify-content: flex-end;
-    align-items: baseline; 
     gap: 10px;
+    padding: 10px;
+    background: linear-gradient(to right, #ffff66 0%, #ffad33 100%);
+    /* background-color: #ffad33; */
 
   }
-
+  
   nav a {
     color: black;
+    text-decoration: none;
+    padding: 5px 10px; /* Add padding for clickable area */
   }
-
-  nav a :hover {
-    cursor: pointer;
+  
+  nav a:hover {
+    background-color: black;
+    color: white;
   }
 
   .home-body {
@@ -54,143 +61,114 @@ nav {
     border: 2px solid black;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     width: 100%;
     height: 100%;
     font-size: 2em;
 }
 
-#sign-in-input {
-    margin-top: 20px;
-    margin-bottom: 5px;
-    width: 300px;
-    height: 50px;
-    border: 2px solid black;
-    border-radius: 30px;
-
-}
-
-input::placeholder {
-    font-size: 14px; /* Change font size */
-    text-align: center; /* Adjust alignment if needed */
-  }
-
 #sign-in-button {
     display: block;
-    width: 100px;
+    width: 200px;
+    height: 50px;
+    border-radius: 50px;
+    border: 1px solid black;
+    cursor: pointer;
+    outline: none;
+    background-color: white;
 
 }
 
-#home-input-button-div {
+.regular-body {
+    background-color: #ffff66;
+}
+
+.container-style-1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    margin-left: 30px;
+    width: 95%;
+    height: 90vh;
+    border: 15px solid black;
+    font-family: "Open Sans", sans-serif;
 }
 
 
-/* button layout and design provided by google as the have guidelines for this item */
-
-.gsi-material-button {
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    -webkit-appearance: none;
-    background-color: WHITE;
-    background-image: none;
-    border: 1px solid #747775;
-    -webkit-border-radius: 20px;
-    border-radius: 20px;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    color: #1f1f1f;
-    cursor: pointer;
-    font-family: 'Roboto', arial, sans-serif;
-    font-size: 14px;
-    height: 40px;
-    letter-spacing: 0.25px;
-    outline: none;
-    overflow: hidden;
-    padding: 0 12px;
-    position: relative;
-    text-align: center;
-    -webkit-transition: background-color .218s, border-color .218s, box-shadow .218s;
-    transition: background-color .218s, border-color .218s, box-shadow .218s;
-    vertical-align: middle;
-    white-space: nowrap;
-    width: auto;
-    max-width: 400px;
-    min-width: min-content;
-  }
-  
-  .gsi-material-button .gsi-material-button-icon {
-    height: 20px;
-    margin-right: 12px;
-    min-width: 20px;
-    width: 20px;
-  }
-  
-  .gsi-material-button .gsi-material-button-content-wrapper {
-    -webkit-align-items: center;
-    align-items: center;
+#container-items {
     display: flex;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-    -webkit-flex-wrap: nowrap;
-    flex-wrap: nowrap;
-    height: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 50vh;  
+    /* border: 2px solid black; */
+} 
+
+#index-ul {
+    display: flex; /* Ensures gap works */
+    flex-direction: column; /* Stack items vertically */
+    gap: 10px; /* Space between list items */
+  }
+
+  #show-page-buttons {
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
-    position: relative;
-    width: 100%;
+    align-items: center;
+    height: 130px;
+    /* border: 2px solid black; */
+    padding: 5px;
+
   }
-  
-  .gsi-material-button .gsi-material-button-contents {
-    -webkit-flex-grow: 1;
-    flex-grow: 1;
-    font-family: 'Roboto', arial, sans-serif;
-    font-weight: 500;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    vertical-align: top;
+
+  #show-delete-button {
+    display: block;
+    width: 100px;
+    height: 50px;
+    border-radius: 50px;
+    border: 1px solid black;
+    cursor: pointer;
+    outline: none;
+    background-color: white;
   }
-  
-  .gsi-material-button .gsi-material-button-state {
-    -webkit-transition: opacity .218s;
-    transition: opacity .218s;
-    bottom: 0;
-    left: 0;
-    opacity: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
+
+  #search-container {
+    height: 460px;
+    /* border: 3px solid yellow; */
+    background-color: #ffad33;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "Open Sans", sans-serif;
   }
-  
-  .gsi-material-button:disabled {
-    cursor: default;
-    background-color: #ffffff61;
-    border-color: #1f1f1f1f;
+
+  #search-bar {
+    border-radius: 30px;
+    outline: none;
+    width: 300px;
+    height: 50px;
+    font-size: 1em;
   }
-  
-  .gsi-material-button:disabled .gsi-material-button-contents {
-    opacity: 38%;
+
+  #search-bar::placeholder {
+    color: gray;
+    font-size: 14px;
+    text-align: center; 
   }
-  
-  .gsi-material-button:disabled .gsi-material-button-icon {
-    opacity: 38%;
+
+
+  #search-results-flex-container  {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: 20px;
   }
-  
-  .gsi-material-button:not(:disabled):active .gsi-material-button-state, 
-  .gsi-material-button:not(:disabled):focus .gsi-material-button-state {
-    background-color: #303030;
-    opacity: 12%;
-  }
-  
-  .gsi-material-button:not(:disabled):hover {
-    -webkit-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
-    box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
-  }
-  
-  .gsi-material-button:not(:disabled):hover .gsi-material-button-state {
-    background-color: #303030;
-    opacity: 8%;
+
+  #back-to-search-button-div {
+    padding: 5px;
+
   }

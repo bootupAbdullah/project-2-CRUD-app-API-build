@@ -3,16 +3,24 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/style.css">
     <title>Character Index</title>
   </head>
-  <body>
-    <h1>All Available Characters</h1>
-    <ul>
-        <% characters.forEach(character => { %>
+  <body class="regular-body">
+    <nav>
+      <a href="/">Home</a>
+      <a href="/characters/search">Search</a>
+    </nav>
+    <div class="container-style-1">
+      <div id="container-items">
+        <h1>All Available Characters</h1>
+        <ul id="index-ul">
+          <% characters.forEach(character => { %>
             <li><a href="/characters/<%= character._id%>"><%= character.name %></a></li>
-    <%  }); %>
-    </ul>
-    <a href="/characters/new">Request a New Characte!</a>
-    <a href="/characters/search">Search for New Characters!</a>
+          <%  }); %>  
+        </ul>
+      </div>
+      <a href="/characters/new">Log Character Results!</a>
+    </div>
   </body>
 </html>
