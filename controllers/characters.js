@@ -129,6 +129,7 @@ const showPageById = async (req, res) => {
 
 // <-------------------------------------DELETE A CHARACTER/ DELETE ROUTE/ DELETE FUNCTIONALITY---------->
 //#8
+// HTTP DELETE - functionality for deleting a character
 const deleteACharacter = async (req, res) => {
     await Character.findByIdAndDelete(req.params.characterId);
     res.redirect("/characters");
@@ -136,7 +137,7 @@ const deleteACharacter = async (req, res) => {
 
 // <----------------------------------------------EDIT A CHARACTER/ EDIT ROUTE---------------------------->
 //#9
-
+// !! resolve comment HTTP 
 const editACharacter = async (req, res) => {
     const foundCharacter = await Character.findById(req.params.characterId);
     // console.log(foundCharacter)
@@ -145,7 +146,7 @@ const editACharacter = async (req, res) => {
 
 // <----------------------------------------------UPDATE A CHARACTER/ UPDATE ROUTE------------------------->
 //#10
-
+//!! resolve comment
 const updateACharacter = async (req, res) => {
     // Handle the 'galleryAvailable' checkbox data
     if(req.body.galleryAvailable === "on") {

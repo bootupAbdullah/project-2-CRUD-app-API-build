@@ -23,8 +23,9 @@ const charactersCtrl = require("./controllers/characters");
 // <------------------------------------------- MIDDLEWARE --------------------------------------->
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride("_method"));
+app.use(express.static('public'));
 
-// !! <-------------------------------------------------------------------- ROUTES ----------------------------------->
+// !! <---------------------------------------------ROUTES ----------------------------------------------------------------->
 
 
 // <---------------------------------------------- HOME PAGE/ GET ROUTE --------------------------->
@@ -32,7 +33,7 @@ app.use(methodOverride("_method"));
 app.get("/", charactersCtrl.homePage);
 
 // <----------------------------------------------INDEX PAGE/ GET ROUTE---------------------------->
-//#4
+//#
 // app.get("/characters", charactersCtrl.indexPage);
 
 // <---------------------------------------------- ADD NEW CHARACTER PAGE/ GET ROUTE  ------------->
@@ -48,35 +49,33 @@ app.post("/characters", charactersCtrl.captureNewCharacterData);
 app.get("/characters", charactersCtrl.indexPage);
 
 
-// <---------------------------------------------- SEARCH PAGE/ GET ROUTE --------------------------->
+// <---------------------------------------------- SEARCH PAGE/ GET ROUTE ------------------------->
 //#5
 app.get("/characters/search", charactersCtrl.searchPage);
 
-// <---------------------------------------------- SEARCH PAGE/ GET ROUTE --------------------------->
+// <---------------------------------------------- SEARCH PAGE/ GET ROUTE ------------------------->
 //#6
 app.post("/characters/search", charactersCtrl.captureSearchData);
 
-
-
-// // <----------------------------------------------SEARCH RESULTS/ GET ROUTE --------------------------->
-// // #
+// <----------------------------------------------SEARCH RESULTS/ GET ROUTE --------------------->
+// #
 // app.get("/characters/search/results", charactersCtrl.searchResults);
 
-// <----------------------------------------------SHOW PAGE/ GET ROUTE/ READ FUNCTIONALITY--------->
-//#
+// <----------------------------------------------SHOW PAGE/ GET ROUTE/ READ FUNCTIONALITY---------->
+//#7
 app.get("/characters/:characterId", charactersCtrl.showPageById);
 
 // <----------------------------------------------DELETE FUNCTIONALITY------------------------------>
-//#
+//#8
 app.delete("/characters/:characterId", charactersCtrl.deleteACharacter);
 
-// <----------------------------------------------EDIT PAGE/ GET ROUTE ------------------------------------>
-//#
+// <----------------------------------------------EDIT PAGE/ GET ROUTE ----------------------------->
+//#9
 app.get("/characters/:characterId/edit", charactersCtrl.editACharacter);
 
 
-// <----------------------------------------------UPDATE A CHARACTER/ PUT ROUTE------------------------------------>
-//#1
+// <----------------------------------------------UPDATE A CHARACTER/ PUT ROUTE--------------------->
+//#10
 app.put("/characters/:characterId", charactersCtrl.updateACharacter);
 
 
