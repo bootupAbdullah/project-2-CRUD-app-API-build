@@ -1,3 +1,6 @@
+!! AS of now there is no functionality in place for when the character search returns a character that does not have the particular data that has been designated for the ejs template - please be aware of this if testing the app 
+
+
 timestamp functionalty: 
 https://stackoverflow.com/questions/221294/how-do-i-get-a-timestamp-in-javascript
 
