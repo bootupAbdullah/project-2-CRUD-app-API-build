@@ -1,6 +1,7 @@
 // <------------------------------------------- MODEL IMPORT --------------------------------------->
 const Character  = require('../models/character');
 const crypto = require('crypto')
+const axios = require('axios')
 
 
 // <------------------------------------------- HOME PAGE/ GET ROUTE-------------------------------->
@@ -49,15 +50,67 @@ const searchPage = async (req, res) => {
 //#6
 // HTTP POST
 const captureSearchData = async (req, res) => {
-    console.log(req.body)
-    console.log(new Date().getTime())
+    // !! Express having issues with converting "userInput" into primitave value, found suggestion on Stack Overflow:
+    // let userInput = object.create(null);
+    // Capture user input
+    let userInput = req.body["query"]
+    console.log(userInput)
+    
+    // Testing/creating 'time stamp' requirement
+    // console.log(new Date().getTime())
+    let ts = new Date().getTime()
+    
+    //!! Declare variables for API keys
+    let apiKey = process.env.MARVEL_PUBLIC_API_KEY
+    let privateApiKey = process.env.MARVEL_PRIVATE_API_KEY
+    // console.log(apiKey, privateApiKey)
+    
+    // Creating variable for 'base' URL for easier user/input
+    let searchByCharacterUrl = "http://gateway.marvel.com/v1/public/characters?"
+    // console.log(searchByCharacterUrl)
+    
+    // console.log(searchByCharacterUrl + ts=ts + '& + apiKey + '&')
+    // console.log(`${searchByCharacterUrl}ts=${ts}&apikey=${apiKey}&hash`)
+    
+    //!! Following attempt did not work, creating an array with parameters to use in '.update' method
+    // let varsToHash = [ts, apiKey, privateApiKey]
+    // console.log(varsToHash)
+    
+    // Create a 'hash' value using (3) URL requirements
+    
+    let hash = crypto.createHash('md5').update(`${ts}${privateApiKey}${apiKey}`).digest("hex")
+    console.log(hash)
+    
+    //!! API call with set parameters
+    try{
+        const dataFromApi = await axios.get(`http://gateway.marvel.com/v1/public/characters?name=${userInput}&ts=${ts}&apikey=${apiKey}&hash=${hash}`)
+        //!! Trial and error: 
+        // console.log(dataFromApi)
+        // console.log(dataFromApi.data.data)
+        // console.log(dataFromApi.data.data[comics])
+        // console.log('data: ' + dataFromApi.data)
+        // console.log()
 
-
-    res.redirect("search")
+        // console.log(dataFromApi.data)
+        // console.log("dataFromApi.data.data:")
+        // console.log(dataFromApi.data.data)
+        // console.log()
+        // console.log("dataFromApi.data.data.results")
+        // !! This following call will list all comics and images for character inside of an object in key:value pairs (20 per call)
+        // console.log(dataFromApi.data.data.results[0].comics)
+        // console.log( '.data.data: ' + dataFromApi.data.data)
+        // console.log(dataFromApi.data.data.results[0])
+        // !! 
+        // console.log(dataFromApi.data)
+        console.log(dataFromApi.data.data.results)
+        let selectAPIData = dataFromApi.data.data.results
+        res.render("characters/results.ejs", {characterData: selectAPIData })
+    } catch (error) {
+        console.error("There was an error: ", error)
+    }
+    
+    // res.redirect("search")
 }
-
-
-
 
 // // <----------------------------------------------SEARCH RESULTS/ GET ROUTE --------------------------->
 // //#6
