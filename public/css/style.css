@@ -1,8 +1,6 @@
 /*<---------------------------------------- FONTS --------------------------------------------------------------->*/
 
-@import url('https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 
 /*<---------------------------------------- STYLING --------------------------------------------------------------->*/
 
@@ -36,7 +34,8 @@ nav {
     justify-content: center;
     gap: 5px;
     background-color: #ffebcc;
-    font-family: "Jaro", sans-serif;
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
     font-style: normal;
   }
 
@@ -93,7 +92,9 @@ nav {
     width: 95%;
     height: 90vh;
     border: 15px solid black;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 
@@ -142,7 +143,9 @@ nav {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
   }
 
   #search-bar {
@@ -159,16 +162,48 @@ nav {
     text-align: center; 
   }
 
+  .search-result-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+    
+  }
 
-  #search-results-flex-container  {
+
+  #search-results-content-container  {
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    width: 50vw;
     gap: 20px;
+    border: solid white 2px;
+    border-radius: 5%;
+    margin-top: 50px;
+    padding-top:50px;
   }
+
+  #search-result-bio {
+    /* border:solid red 2px; */
+    width: 50wh;
+    height: 30vh;
+    font-weight: 500;
+    font-size: 1em;
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+#search-result-bio p {
+  
+}
 
   #back-to-search-button-div {
     padding: 5px;
+    border: solid green 2px;
+    gap: 10px;
 
   }
+
+

@@ -16,6 +16,7 @@
                 <p> This character's gallery is NOT ready! Please check back later.</p>
             <% } %>
         </div>
+        
         <div id="show-page-buttons">
         <form action="/characters/<%= character._id %>?_method=DELETE" method="POST">
             <button  id="show-delete-button" type="submit">Delete <%= character.name %></button>

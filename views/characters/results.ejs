@@ -7,15 +7,19 @@
     <title>Search Results</title>
 </head>
 <body class="regular-body">
-    <h1>Search Results</h1>
-    <h3>id:<%=characterData[0].id%></h3>
-    <div id="search-results-flex-container">
-        <h2><%=characterData[0].name%></h2>
-        <img src="<%=characterData[0].thumbnail.path%>/standard_xlarge.jpg" alt="<%=characterData[0].name%>">
-        <p>Description:<%=characterData[0].description%></p>
+    <div class="search-result-page-container">
+        <!-- <h1>Search Results</h1> -->
+        <!-- <h3>Marvel Database ID:<%=characterData[0].id%></h3> -->
+        <div id="search-results-content-container">
+            <h2><%=characterData[0].name%></h2>
+            <img src="<%=characterData[0].thumbnail.path%>/portrait_incredible.jpg" alt="<%=characterData[0].name%>">
+            <div id=search-result-bio>
+                <p>Description:<%=characterData[0].description%></p>
+            </div>
+        </div>
+        <div id="back-to-search-button-div">
+            <a href="/characters/search" ><button>Back to Search</button></a>
+        </div >
     </div>
-    <div id="back-to-search-button-div">
-        <a href="/characters/search" ><button>Back to Search</button></a>
-    </div >
 </body>
 </html>

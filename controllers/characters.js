@@ -66,7 +66,7 @@ const captureSearchData = async (req, res) => {
     // console.log(apiKey, privateApiKey)
     
     // Creating variable for 'base' URL for easier user/input
-    let searchByCharacterUrl = "http://gateway.marvel.com/v1/public/characters?"
+    // let searchByCharacterUrl = "http://gateway.marvel.com/v1/public/characters?" //!! not in use
     // console.log(searchByCharacterUrl)
     
     // console.log(searchByCharacterUrl + ts=ts + '& + apiKey + '&')
@@ -83,7 +83,15 @@ const captureSearchData = async (req, res) => {
     
     //!! API call with set parameters
     try{
-        const dataFromApi = await axios.get(`http://gateway.marvel.com/v1/public/characters?name=${userInput}&ts=${ts}&apikey=${apiKey}&hash=${hash}`)
+        const dataFromApi = await axios.get(`http://gateway.marvel.com/v1/public/characters?name=${userInput}&ts=${ts}&apikey=${apiKey}&hash=${hash}`);
+        // const seriesData = await axios.get(`http://gateway.marvel.com/v1/public/characters/1009262/series&ts=${ts}&apikey=${apiKey}&hash=${hash}`);
+        // const seriesTest = seriesData.data;
+        const data = dataFromApi.data;
+        // console.log(seriesTest)
+        console.log(data.data);
+        console.log(data.data.results);
+        console.log(data.data.results[0]);
+        console.log(data.data.results[0].comics)
         //!! Trial and error: 
         // console.log(dataFromApi)
         // console.log(dataFromApi.data.data)
@@ -102,9 +110,14 @@ const captureSearchData = async (req, res) => {
         // console.log(dataFromApi.data.data.results[0])
         // !! 
         // console.log(dataFromApi.data)
-        console.log(dataFromApi.data.data.results)
+        // console.log(dataFromApi.data.data.results)
+        // console.log(dataFromApi.data.data.results[0].comics.items)
+        //!! Working here:
+        let characterComicsImages = dataFromApi.data.data.results[0].comics.items[0].resourceURI
+        console.log(characterComicsImages)
         let selectAPIData = dataFromApi.data.data.results
-        res.render("characters/results.ejs", {characterData: selectAPIData })
+        res.render("characters/results.ejs", {characterData: selectAPIData})
+        //!! End here
     } catch (error) {
         console.error("There was an error: ", error)
     }
