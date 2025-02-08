@@ -97,7 +97,6 @@ nav {
     font-style: normal;
 }
 
-
 #container-items {
     display: flex;
     flex-direction: column;
@@ -161,49 +160,101 @@ nav {
     font-size: 14px;
     text-align: center; 
   }
-
-  .search-result-page-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-   
-    
-  }
-
-
-  #search-results-content-container  {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    width: 50vw;
-    gap: 20px;
-    border: solid white 2px;
-    border-radius: 5%;
-    margin-top: 50px;
-    padding-top:50px;
-  }
-
-  #search-result-bio {
-    /* border:solid red 2px; */
-    width: 50wh;
-    height: 30vh;
-    font-weight: 500;
-    font-size: 1em;
-    font-family: "Libre Baskerville", serif;
-    font-weight: 400;
-    font-style: normal;
-}
-
-#search-result-bio p {
   
+  /* 
+  ============================================
+  results.ejs | Endpoint: /search
+  ============================================
+  Styles for the search results page.
+*/
+
+/* .search-page-body-element {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 95vw;
+  height: 100vh;
+  background-color: #ffff66;
+  border: solid black 2px;
+} */
+
+.search-page-body-element {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: solid 2px black;
+  height: 100vh;
+  background-color: #ffff66
 }
 
-  #back-to-search-button-div {
-    padding: 5px;
-    border: solid green 2px;
-    gap: 10px;
 
-  }
+.search-result-content-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  width: 50vw;
+  height: 80vh;
+  border: solid white 5px;
+  border-radius: 5%;
+  padding: 50px;
+  background-color: #f8f8f8; /* Softer background */
+  overflow: hidden; /* Prevent overflow */
+}
+
+#search-results-content-container {
+  display: contents;            
+}
+
+#search-result-character-image {
+  /* border: solid red 2px; */
+  border-radius: 5%;
+  width: 50%;
+  grid-column: 1 / span 1;        /* Span 1 column */
+}
+
+#search-result-character-name {
+  /* border: solid blue 2px; */
+  border-radius: 5%;
+  grid-column: 2 / span 1;        /* Span 1 column */
+  line-height: 1%;
+  margin-top: 100px;    /* !! FIND ALTERNATIVE TO THIS SETTING AS IT LEADS TO ISSUES WITH RESPONSIVENESS */
+  margin-right: 200px;  /* !! FIND ALTERNATIVE TO THIS SETTING AS IT LEADS TO ISSUES WITH RESPONSIVENESS */ 
+}
+
+#search-result-character-name h2 {
+  font-family: "Libre Baskerville", serif;
+  font-size: 4em;
+  /* margin: 0; */
+}
+
+
+#search-result-character-name h3 {
+  font-family: "Libre Baskerville", serif;
+  font-size: 1em;
+  /* margin: 0; */
+}
+
+
+#search-result-character-bio {
+  /* border:solid red 2px; */
+  grid-column: 1 / span 2;        /* Span 2 columns */
+}
+
+#search-result-character-bio p {
+  font-family: "Libre Baskerville", serif;
+  font-size: 1.5em;
+  word-spacing: .5px;
+  line-height: 32px;
+
+}
+
+
+
+
+
+
 
 

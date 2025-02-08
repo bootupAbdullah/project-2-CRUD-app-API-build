@@ -6,20 +6,24 @@
     <link rel="stylesheet" href="/css/style.css">
     <title>Search Results</title>
 </head>
-<body class="regular-body">
-    <div class="search-result-page-container">
+<body class="search-page-body-element">
+    <div class="search-result-content-container">
         <!-- <h1>Search Results</h1> -->
-        <!-- <h3>Marvel Database ID:<%=characterData[0].id%></h3> -->
         <div id="search-results-content-container">
-            <h2><%=characterData[0].name%></h2>
-            <img src="<%=characterData[0].thumbnail.path%>/portrait_incredible.jpg" alt="<%=characterData[0].name%>">
-            <div id=search-result-bio>
+            <div id="search-result-character-image">
+                <img src="<%=characterData[0].thumbnail.path%>/portrait_incredible.jpg" alt="<%=characterData[0].name%>">
+            </div>
+            <div id="search-result-character-name">
+                <h2><%=characterData[0].name%></h2>
+                <h3>Marvel Database ID:<%=characterData[0].id%></h3>
+            </div>    
+            <div id="search-result-character-bio">
                 <p>Description:<%=characterData[0].description%></p>
             </div>
         </div>
-        <div id="back-to-search-button-div">
+        <!-- <div id="back-to-search-button-div">
             <a href="/characters/search" ><button>Back to Search</button></a>
-        </div >
+        </div > -->
     </div>
 </body>
 </html>
