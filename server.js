@@ -55,7 +55,7 @@ app.get("/characters/search", charactersCtrl.searchPage);
 
 // <---------------------------------------------- SEARCH PAGE/ GET ROUTE ------------------------->
 //#6
-app.post("/characters/search", charactersCtrl.captureSearchData);
+app.post("/characters/search/results", charactersCtrl.displaySearchData);
 
 // <----------------------------------------------SEARCH RESULTS/ GET ROUTE --------------------->
 // #

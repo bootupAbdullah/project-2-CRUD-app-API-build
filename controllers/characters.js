@@ -49,7 +49,7 @@ const searchPage = async (req, res) => {
 // <----------------------------------------------SEARCH PAGE/ POST ROUTE------------------------------------>
 //#6
 // HTTP POST
-const captureSearchData = async (req, res) => {
+const displaySearchData = async (req, res) => {
     // !! Express having issues with converting "userInput" into primitave value, found suggestion on Stack Overflow:
     // let userInput = object.create(null);
     // Capture user input
@@ -187,6 +187,6 @@ module.exports = {
     editACharacter,
     updateACharacter,
     searchPage,
-    captureSearchData,
+    displaySearchData,
     // searchResults
 }
